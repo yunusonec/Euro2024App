@@ -1,0 +1,85 @@
+﻿.carousel-item img {
+    object-fit: contain; /* Resimleri container boyutuna göre kes ve hizala */
+    height: 500px; /* Carousel yüksekliği */
+    width: 100%;
+    display: block;
+    margin: 0 auto; /* Ortalamak için */
+}
+
+/* Ok ikonlarının konumlandırılması */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: cornflowerblue; /* Arka plan rengini siyah yapar */
+    border-radius: 50%; /* Daire şeklinde arka plan */
+}
+
+
+.navbar-nav {
+    width: 100%;
+    justify-content: center;
+}
+
+    .navbar-nav .nav-link {
+        font-weight: 500;
+        color: black;
+        font-size: 1.2rem; /* Font size can be adjusted */
+    }
+
+        .navbar-nav .nav-link:hover {
+            color: black; /* Ensures color remains black on hover */
+        }
+
+    .navbar-nav .nav-item .nav-link {
+        font-weight: 600; /* Font weight for a slightly thinner appearance */
+        color: cornflowerblue;
+        font-size: 1.2rem; /* Font size */
+        transition: color 0.3s ease; /* Smooth transition for hover effects */
+    }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: darkgray; /* Change color on hover */
+        }
+
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif; /* Apply the chosen font */
+    font-weight: 700; /* Adjust font weight if needed */
+    color: cornflowerblue; /* Ensure text color */
+    font-size: 1.5rem; /* Adjust font size */
+    padding-left: 15px;
+}
+
+.team img {
+    width: 100px; /* Genişlik ayarı */
+    height: 100px; /* Yükseklik ayarı */
+    object-fit: contain; /* Obje fit ayarı */
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    padding: 10px;
+}
+
+.card-img-top {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-top: 20px; /* Resmin üst kısmından kart çerçevesine boşluk ekle */
+    margin-bottom: 15px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

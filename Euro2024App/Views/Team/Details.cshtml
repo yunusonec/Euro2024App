@@ -1,0 +1,53 @@
+﻿@model Euro2024App.Models.TeamDetailsViewModel
+@{
+    ViewData["Title"] = "TeamDetails";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+
+<div class="container mt-5">
+    <!-- Başlık ve Takım Fotoğrafı -->
+    <div class="row mb-4">
+        <div class="col-md-3 text-center">
+            <!-- Takım Fotoğrafı -->
+            <img src="@Model.Team.PhotoUrl" alt="Team Photo" class="img-thumbnail" style="max-width: 250px;">
+        </div>
+        <div class="col-md-9 d-flex align-items-center">
+            <!-- Takım İsmi -->
+            <h1 class="display-4">@Model.Team.Name</h1>
+        </div>
+    </div>
+
+    <!-- Teknik Direktör ve Oyuncular -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h3>Teknik Direktör</h3>
+            <div class="d-flex align-items-start">
+                <!-- Teknik Direktör Fotoğrafı -->
+                <img src="@Model.Coach?.PhotoUrl" alt="Coach Photo" class="img-thumbnail me-3" style="max-width: 150px;">
+
+                <!-- Teknik Direktör Bilgileri -->
+                <div>
+                    <h5 class="mb-2">@Model.Coach?.Name</h5>
+                    <p class="mb-1"><strong>Yaş:</strong> @Model.Coach?.Age</p>
+                    <p class="mb-1"><strong>Uyruk:</strong> @Model.Coach?.Nationality</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h3>Oyuncular</h3>
+            <ul class="list-group">
+                @foreach (var player in Model.Players)
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>@player.Name</strong>
+                            <small class="text-muted">- @player.Position</small>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

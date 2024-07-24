@@ -1,0 +1,35 @@
+﻿@using EntityLayer.Concrete
+@model List<Match>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Son Maçlar</h2>
+    <div class="row">
+        <!-- Maç Kartı -->
+        @foreach(var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">@item.Date.ToString("dd MMMMMM")</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="team text-center">
+                                <img src="@item.HomeTeam.PhotoUrl" class="img-fluid" alt="Team 1 Logo">
+                                <p class="mt-2">@item.HomeTeam.Name</p>
+                            </div>
+                            <div class="score text-center">
+                                <h4>@item.HomeTeamGoals - @item.AwayTeamGoals</h4>
+                            </div>
+                            <div class="team text-center">
+                                <img src="@item.AwayTeam.PhotoUrl" class="img-fluid" alt="Team 2 Logo">
+                                <p class="mt-2">@item.AwayTeam.Name</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary">Detaylar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }  
+    </div>
+</div>

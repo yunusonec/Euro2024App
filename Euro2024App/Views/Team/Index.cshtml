@@ -1,0 +1,27 @@
+﻿@using EntityLayer.Concrete
+@model List<Team>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Turnuvadaki Takımlar</h1>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <!-- Takım kartını bir bağlantı ile sarmalayın -->
+                <a href="@Url.Action("Details", "Team", new { id = item.TeamId })" class="text-decoration-none">
+                    <div class="card h-100">
+                        <img src="@item.PhotoUrl" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">@item.Name</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>

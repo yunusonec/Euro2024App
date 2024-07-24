@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Header -->
+    @await Html.PartialAsync("~/Views/LayoutPartial/_HeaderPartial.cshtml")
+
+    <!-- Navbar -->
+    @await Html.PartialAsync("~/Views/LayoutPartial/_NavbarPartial.cshtml")
+
+    <!-- Main Content -->
+    <main role="main" class="flex-grow-1 container mt-4">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    @await Html.PartialAsync("~/Views/LayoutPartial/_FooterPartial.cshtml")
+
+    <!-- Scripts -->
+
+    @await Html.PartialAsync("~/Views/LayoutPartial/_ScriptsPartial.cshtml")
+</body>
+
+</html>
