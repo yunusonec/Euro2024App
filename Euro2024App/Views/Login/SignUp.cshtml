@@ -1,4 +1,4 @@
-﻿
+﻿@model Euro2024App.Models.UserRegisterViewModel
 @{
     Layout = null;
 }
@@ -13,16 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="~/css/site.css">
 </head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Kodinger">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>EURO 2024</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="~/css/site.css">
-</head>
+
 <body class="my-login-page">
     <section class="h-100 d-flex align-items-center justify-content-center">
         <div class="container h-100">
@@ -37,31 +28,34 @@
                             <form method="POST" class="my-login-validation" novalidate="">
                                 <div class="form-group">
                                     <label for="name">Ad</label>
-                                    <input id="name" type="text" class="form-control" name="name" placeholder="Adınız" required autofocus>
+                                    <input id="name" type="text" class="form-control" name="Name" required asp-for="Name">
+                                    <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="surname">Soyad</label>
-                                    <input id="surname" type="text" class="form-control" name="surname" placeholder="Soyadınız" required>
+                                    <input id="surname" type="text" class="form-control" required asp-for="Surname">
+                                    <span asp-validation-for="Surname" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username">Kullanıcı Adı</label>
+                                    <input id="username" type="text" class="form-control" required asp-for="Username">
+                                    <span asp-validation-for="Username" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-Mail</label>
-                                    <input id="email" type="email" class="form-control" name="email" placeholder="Mailiniz" required>
+                                    <input id="email" type="email" class="form-control"  required asp-for="Email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Şifre</label>
-                                    <input id="password" type="password" class="form-control" name="password" placeholder="Şifreniz" required data-eye>
+                                    <input id="password" type="password" class="form-control" required asp-for="Password">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Şifre Tekrar</label>
-                                    <input id="password" type="password" class="form-control" name="password" placeholder="Şifreniz" required data-eye>
-                                </div>
-                                <div class="form-group">
-                                    <div class="custom-checkbox custom-control">
-                                        <input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
-                                        <label for="agree" class="custom-control-label">
-                                            <a href="#">Kullanıcı Sözleşmesini</a> kabul ediyorum.
-                                        </label>
-                                    </div>
+                                    <input id="password" type="password" class="form-control" required asp-for="ConfirmPassword">
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                                 </div>
                                 <div class="form-group m-0">
                                     <button type="submit" class="btn btn-primary btn-block">

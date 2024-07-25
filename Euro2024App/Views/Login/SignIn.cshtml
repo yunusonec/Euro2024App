@@ -1,4 +1,4 @@
-﻿
+﻿@model Euro2024App.Models.UserSignInViewModel
 @{
     Layout = null;
 }
@@ -26,13 +26,26 @@
                         <div class="card-body">
                             <h4 class="card-title text-center">Giriş Yap</h4>
                             <form method="POST" class="my-login-validation" novalidate="">
+                                @if (!ViewData.ModelState.IsValid)
+                                {
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                            {
+                                                <li>@error.ErrorMessage</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
                                 <div class="form-group">
-                                    <label for="email">E-Mail</label>
-                                    <input id="email" type="email" class="form-control" name="email" placeholder="Mailiniz" required>
+                                    <label for="username">Kullanıcı Adı</label>
+                                    <input id="username" type="text" class="form-control" asp-for="Username" placeholder="Kullanıcı adınız" required>
+                                    <span asp-validation-for="Username"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Şifre</label>
-                                    <input id="password" type="password" class="form-control" name="password" placeholder="Şifreniz" required data-eye>
+                                    <input id="password" type="password" class="form-control" asp-for="Password" placeholder="Şifreniz" required data-eye>
+                                    <span asp-validation-for="Password"></span>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-checkbox custom-control">
