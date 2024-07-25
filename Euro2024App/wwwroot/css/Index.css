@@ -57,24 +57,34 @@
 }
 
 .card {
+    background-color: #fffbfb; /* Koyu arka plan rengi */
+    color: black; /* Beyaz yazı rengi */
+    border: none; /* Varsayılan border'ı kaldır */
+    border-radius: 10px; /* Köşeleri yuvarla */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge ekle */
+    transition: transform 0.3s, box-shadow 0.3s; /* Hover efekti için geçişler */
+    height: 350px; /* Kart yüksekliği */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    overflow: hidden;
-    padding: 10px;
+}
+    .card:hover {
+        transform: scale(1.05); /* Hover'da kartı büyüt */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Hover'da gölgeyi artır */
+    }
+.card-img-top {
+    border-radius: 10px 10px 10px 10px; /* Üst köşeleri yuvarla */
+    object-fit: cover; /* Resmin tamamını sığdır */
+    height: 200px; /* Resim yüksekliği */
+    width: auto; /* Resim genişliği */
+    margin-top: 15px; /* Üstten boşluk */
 }
 
-.card-img-top {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-    margin-top: 20px; /* Resmin üst kısmından kart çerçevesine boşluk ekle */
-    margin-bottom: 15px;
+.card-title {
+    font-weight: 700; /* Kalın yazı tipi */
+    margin-top: 15px; /* Üstten boşluk */
+    text-align: center; /* Ortala */
 }
 
 .card-body {
