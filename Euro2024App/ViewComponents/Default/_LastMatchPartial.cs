@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,9 +9,9 @@ namespace Euro2024App.ViewComponents.Default
     {
         private readonly MatchManager _matchManager;
 
-        public _LastMatchPartial()
+        public _LastMatchPartial(IMatchDal matchDal)
         {
-            _matchManager = new MatchManager(new EfMatchDal());
+            _matchManager = new MatchManager(matchDal);
         }
         public IViewComponentResult Invoke()
         {

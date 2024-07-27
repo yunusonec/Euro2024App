@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IPlayerDal : IGenericDal<Player>
     {
+        Player Get(Func<Player, bool> filter);
     }
 }

@@ -19,5 +19,6 @@ namespace EntityLayer.Concrete
         public int HomeTeamGoals { get; set; }
         public int AwayTeamGoals { get; set; }
         public ICollection<PlayerStatistics> PlayerStatistics { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

@@ -22,31 +22,38 @@ namespace BusinessLayer.Concrete
 
         public Match GetByID(int id)
         {
-            throw new NotImplementedException();
+            return GetMatchQueryable().FirstOrDefault(m => m.Id == id);
         }
 
         public void TAdd(Match t)
         {
-            throw new NotImplementedException();
+            _matchDal.Insert(t);
         }
 
         public void TDelete(Match t)
         {
-            throw new NotImplementedException();
+            _matchDal.Delete(t);
         }
 
         public List<Match> TGetList()
         {
-            return _matchDal.GetList();
+            return _matchDal.GetAllQueryable().ToList();
         }
         public List<Match> TGetLastThreeMatches()
         {
-            return _matchDal.GetLastThreeMatches();
+            return _matchDal.GetAllQueryable()
+               .OrderByDescending(m => m.Date)  // Son maçları almak için tarihe göre sırala
+               .Take(3)  // İlk 3 maçı al
+               .ToList();
         }
 
         public void TUpdate(Match t)
         {
-            throw new NotImplementedException();
+            _matchDal.Update(t);
+        }
+        public IQueryable<Match> GetMatchQueryable() // Bu metodu uygulayın
+        {
+            return _matchDal.GetMatchQueryable();
         }
     }
 }

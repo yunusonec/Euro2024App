@@ -12,6 +12,7 @@ namespace BusinessLayer.Concrete
     public class TeamManager : ITeamService
     {
         private readonly ITeamDal _teamDal;
+        
 
         public TeamManager(ITeamDal teamDal)
         {
@@ -51,6 +52,11 @@ namespace BusinessLayer.Concrete
         public void TUpdate(Team t)
         {
             _teamDal.Update(t);
+        }
+
+        public IEnumerable<Coach> GetAllCoaches()
+        {
+            return _teamDal.GetAllCoaches();
         }
     }
 }

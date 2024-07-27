@@ -11,14 +11,15 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EfPlayerDal : GenericRepository<Player>, IPlayerDal
+    public class EfCommentDal : GenericRepository<Comment>, ICommentDal
     {
-        public EfPlayerDal(Context context) : base(context)
+        public EfCommentDal(Context context) : base(context)
         {
+
         }
-        public Player Get(Func<Player, bool> filter)
+        public IEnumerable<Comment> GetAll(Func<Comment, bool> filter)
         {
-            return _context.Set<Player>().FirstOrDefault(filter);
+            return _dbSet.AsNoTracking().Where(filter).ToList();
         }
     }
 }

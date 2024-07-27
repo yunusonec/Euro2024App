@@ -1,0 +1,68 @@
+﻿@model EntityLayer.Concrete.Match
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+@if (Model != null)
+{
+    <h1>@Model.HomeTeam.Name vs @Model.AwayTeam.Name</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.HomeTeam.Name vs @Model.AwayTeam.Name</h5>
+                        <p class="card-text">
+                            <strong>Tarih:</strong> @Model.Date.ToString("dd MMMM yyyy") <br />
+                            <strong>Skor:</strong> @Model.HomeTeamGoals - @Model.AwayTeamGoals <br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yorumlar Kısmı -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h4>Yorumlar</h4>
+                <div class="list-group">
+                    @if (Model.Comments != null && Model.Comments.Any())
+                    {
+                        @foreach (var comment in Model.Comments.OrderByDescending(c => c.CreatedAt))
+                        {
+                            <div class="list-group-item">
+                                <strong>@comment.User.UserName</strong> - <small>@comment.CreatedAt.ToString("dd MMMM yyyy HH:mm")</small>
+                                <p>@comment.Text</p>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>Henüz yorum yapılmamış.</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Yorum Ekleme Formu -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h4>Yorum Yap</h4>
+                <form asp-controller="Comment" asp-action="AddComment" method="post">
+                    <input type="hidden" name="MatchId" value="@Model.Id" />
+                    <div class="form-group">
+                        <label for="text">Yorum:</label>
+                        <textarea id="text" name="Text" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Yorum Gönder</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p>Maç bilgileri bulunamadı.</p>
+}

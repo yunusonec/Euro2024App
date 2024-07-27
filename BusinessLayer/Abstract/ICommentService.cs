@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface ICoachService : IGenericService<Coach>
+    public interface ICommentService: IGenericService<Comment>
     {
-        List<Coach> GetAllCoaches();
+        IEnumerable<Comment> GetCommentsByMatchId(int matchId);
+        void AddComment(Comment comment);
     }
 }

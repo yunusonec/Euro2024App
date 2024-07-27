@@ -1,0 +1,27 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Player>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+<h1>Oyuncular</h1>
+<br />
+<div class="container">
+    <div class="row">
+        @foreach (var player in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card custom-card">
+                    <img src="@player.PhotoUrl" class="card-img-top" alt="Player Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@player.Name</h5>
+                        <p class="card-text">
+                            <strong>Pozisyon:</strong> @player.Position <br />
+                            <strong>Yaş:</strong> @player.Age <br />
+                            <strong>Uyruk:</strong> @player.Nationality <br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Match>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<h1>Maçlar</h1>
+<br />
+<div class="container">
+    @if (User.IsInRole("Admin")) // Kullanıcının Admin rolünde olup olmadığını kontrol et
+    {
+        <a href="@Url.Action("Create", "Match")" class="btn btn-primary mb-3">Maç Ekle</a>
+    }
+    <div class="row">
+        @foreach (var match in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h5 class="card-title">@match.HomeTeam.Name vs @match.AwayTeam.Name</h5>
+                        <p class="card-text">
+                            <strong>Tarih:</strong> @match.Date.ToString("dd MMMM yyyy") <br />
+                            <strong>Skor:</strong> @match.HomeTeamGoals - @match.AwayTeamGoals <br />
+                        </p>
+                        <a href="@Url.Action("Details", "Match", new { id = match.Id })" class="btn btn-info">Detaylar</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

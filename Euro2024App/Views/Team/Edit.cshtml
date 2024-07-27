@@ -1,0 +1,31 @@
+﻿@model Euro2024App.Models.TeamModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+
+
+<h2>Edit Team</h2>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <input type="hidden" asp-for="Id" />
+        
+    </div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PhotoUrl"></label>
+        <input asp-for="PhotoUrl" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CoachId"></label>
+        <select asp-for="CoachId" class="form-control" asp-items="@(ViewBag.CoachList as SelectList)">
+            <option value="">Select a Coach</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

@@ -15,7 +15,7 @@ namespace DataAccessLayer.EntityFramework
     {
         private readonly Context _context;
 
-        public EfTeamDal(Context context) 
+        public EfTeamDal(Context context) : base(context)
         {
             _context = context;
         }
@@ -47,6 +47,10 @@ namespace DataAccessLayer.EntityFramework
             return _context.Coaches
                 .Include(c => c.Team) // Eğer 'Team' ile ilgili ek veriler gerekiyorsa
                 .FirstOrDefault(c => c.Team.TeamId == teamId);
+        }
+        public List<Coach> GetAllCoaches()
+        {
+            return _context.Coaches.ToList(); // Koçların tamamını döndür
         }
     }
 }

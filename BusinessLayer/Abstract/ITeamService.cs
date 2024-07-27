@@ -11,5 +11,7 @@ namespace BusinessLayer.Abstract
     {
         List<Player> GetPlayersByTeamId(int teamId);
         Coach GetCoachByTeamId(int teamId);
+        IEnumerable<Coach> GetAllCoaches();
+        List<Team> TGetList();
     }
 }

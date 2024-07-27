@@ -65,7 +65,7 @@ namespace Euro2024App.Controllers
                 var result = await _signInManager.PasswordSignInAsync(p.Username, p.Password,false,true);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index","Default");
+                    return RedirectToAction("Index","Profile",new {area = "AdminArea"});
                 }
                 else
                 {
@@ -74,6 +74,12 @@ namespace Euro2024App.Controllers
 
             }
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> SignOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("SignIn");
         }
     }
 }

@@ -13,15 +13,50 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfMatchDal : GenericRepository<Match>, IMatchDal
     {
-        public List<Match> GetLastThreeMatches()
+        private readonly Context _context;
+        public EfMatchDal(Context context) : base(context)
         {
-            using var context = new Context();
-            return context.Matches
-                          .Include(m => m.HomeTeam)
-                          .Include(m => m.AwayTeam)
-                          .OrderByDescending(m => m.Date)
-                          .Take(3)
-                          .ToList();
+            _context = context;
+        }
+
+        public IQueryable<Match> GetAll()
+        {
+            return _context.Matches
+                .Include(m => m.HomeTeam)
+                .Include(m => m.AwayTeam);
+        }
+
+        public IQueryable<Match> GetLastThreeMatches()
+        {
+            return _context.Matches
+                .Include(m => m.HomeTeam)
+                .Include(m => m.AwayTeam)
+                .OrderByDescending(m => m.Date)
+                .Take(3);
+        }
+
+        public Match GetByID(int id)
+        {
+            return _context.Matches
+                .Include(m => m.HomeTeam)
+                .Include(m => m.AwayTeam)
+                .FirstOrDefault(m => m.Id == id);
+        }
+        public IQueryable<Match> GetAllQueryable()
+        {
+            return _context.Matches
+                .Include(m => m.HomeTeam)
+                .Include(m => m.AwayTeam)
+                .Include(m => m.Comments)
+                    .ThenInclude(c => c.User);
+        }
+        public IQueryable<Match> GetMatchQueryable()
+        {
+            return _context.Matches
+                .Include(m => m.HomeTeam)
+                .Include(m => m.AwayTeam)
+                .Include(m => m.Comments)
+                    .ThenInclude(c => c.User);
         }
     }
 }

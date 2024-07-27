@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Abstract
+namespace DataAccessLayer.Abstract
 {
-    public interface ICoachService : IGenericService<Coach>
+    public interface ICommentDal : IGenericDal<Comment>
     {
-        List<Coach> GetAllCoaches();
+        IEnumerable<Comment> GetAll(Func<Comment, bool> filter);
     }
 }

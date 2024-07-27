@@ -15,5 +15,6 @@ namespace BusinessLayer.Abstract
         List<Match> TGetList();
         List<Match> TGetLastThreeMatches();
         void TUpdate(Match t);
+        IQueryable<Match> GetMatchQueryable();
     }
 }

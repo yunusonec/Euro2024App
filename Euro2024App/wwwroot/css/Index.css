@@ -93,3 +93,14 @@
     align-items: center;
     justify-content: center;
 }
+
+.custom-card {
+    width: 100%;
+    max-width: 200px; /* Kart genişliğini küçültür */
+    margin: auto; /* Kartı ortalar */
+}
+
+    .custom-card img {
+        height: 155px; /* Resim yüksekliğini ayarlar */
+        object-fit: cover; /* Resmi kapsayıcıya göre keser */
+    }

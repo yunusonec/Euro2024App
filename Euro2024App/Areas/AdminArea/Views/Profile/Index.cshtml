@@ -1,8 +1,29 @@
-﻿
+﻿@model Euro2024App.Areas.AdminArea.Models.UserEditViewModel
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Profil Düzenleme</h1>
 
+<form method="post">
+    @Html.Label("Adınız")
+    <input type="text" asp-for="name" class="form-control"/>
+    <br />
+    @Html.Label("Soyadınız")
+    <input type="text" asp-for="surname" class="form-control" />
+    <br />
+    @Html.Label("Mail Adresiniz")
+    <input type="text" asp-for="email" class="form-control" />
+    <br />
+    @Html.Label("Telefon Numarası")
+    <input type="text" asp-for="phonenumber" class="form-control" />
+    <br />
+    @Html.Label("Şifreniz")
+    <input type="text" asp-for="password" class="form-control" />
+    <br />
+    @Html.Label("Şifre Tekrar")
+    <input type="text" asp-for="confirmpassword" class="form-control" />
+    <br />
+    <button class="btn btn-primary">Bilgileri Güncelle</button>
+</form>

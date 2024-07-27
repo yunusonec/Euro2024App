@@ -9,6 +9,10 @@ namespace DataAccessLayer.Abstract
 {
     public interface IMatchDal : IGenericDal<Match>
     {
-        List<Match> GetLastThreeMatches();
+        IQueryable<Match> GetAll(); // IQueryable döndürmeli
+        IQueryable<Match> GetMatchQueryable();
+        IQueryable<Match> GetLastThreeMatches();
+        IQueryable<Match> GetAllQueryable();
+        Match GetByID(int id);
     }
 }

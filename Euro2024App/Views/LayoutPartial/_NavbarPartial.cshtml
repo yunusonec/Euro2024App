@@ -10,7 +10,10 @@
                     <a class="nav-link" href="@Url.Action("Index", "Team")">Takımlar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Maçlar</a>
+                    <a class="nav-link" href="@Url.Action("Index", "Match")">Maçlar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Player")">Oyuncular</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -26,8 +29,20 @@
             <ul class="navbar-nav ms-auto">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">@User.Identity.Name</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @User.Identity.Name
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="@Url.Action("EditProfile", "Profile")">Profili Düzenle</a>
+                            </li>
+                            <li>
+                                <form asp-controller="Login" asp-action="SignOut" method="post" class="dropdown-item p-0">
+                                    <button type="submit" class="btn btn-link p-0">Oturumu Kapat</button>
+                                </form>
+                            </li>
+                        </ul>
                     </li>
                 }
                 else

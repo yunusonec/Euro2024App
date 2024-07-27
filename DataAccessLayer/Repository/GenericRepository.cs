@@ -1,8 +1,10 @@
 ﻿using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,29 +12,49 @@ namespace DataAccessLayer.Repository
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
-        public void Delete(T t)
+        protected readonly Context _context;  // Protected olarak tanımlanır
+        protected readonly DbSet<T> _dbSet;
+
+        public GenericRepository(Context context)  // Context parametresi alır
         {
-            using var c = new Context();
-            c.Remove(t);
-            c.SaveChanges();
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _dbSet = _context.Set<T>();
+        }
+
+        public void Delete(T entity)
+        {
+            _dbSet.Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            return _dbSet.FirstOrDefault(filter);
         }
 
         public List<T> GetList()
         {
-            using var c = new Context();
-            return c.Set<T>().ToList();
+            return _dbSet.ToList();
         }
 
-        public void Insert(T t)
+        public void Insert(T entity)
         {
-            using var c = new Context();
-            c.Add(t);
+            _dbSet.Add(entity);
+            _context.SaveChanges();
         }
 
-        public void Update(T t)
+        public void Update(T entity)
         {
-            using var c = new Context();
-            c.Update(t);
+            _dbSet.Update(entity);
+            _context.SaveChanges();
+        }
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null)
+        {
+            return filter == null ? _dbSet.AsEnumerable() : _dbSet.Where(filter).AsEnumerable();
+        }
+        public IEnumerable<T> GetAll(Func<T, bool> filter)
+        {
+            return _dbSet.AsNoTracking().Where(filter).ToList();
         }
     }
 }

@@ -12,5 +12,7 @@ namespace DataAccessLayer.Abstract
         Team Get(Func<Team, bool> filter);
         List<Player> GetPlayersByTeamId(int teamId);
         Coach GetCoachByTeamId(int teamId);
+        List<Team> GetList();
+        List<Coach> GetAllCoaches();
     }
 }

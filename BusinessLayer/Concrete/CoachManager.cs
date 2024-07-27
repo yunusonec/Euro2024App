@@ -11,7 +11,7 @@ namespace BusinessLayer.Concrete
 {
     public class CoachManager : ICoachService
     {
-        ICoachDal _coachDal;
+        private readonly ICoachDal _coachDal;
 
         public CoachManager(ICoachDal coachDal)
         {
@@ -20,7 +20,7 @@ namespace BusinessLayer.Concrete
 
         public Coach GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _coachDal.Get(c => c.CoachId == id);
         }
 
         public void TAdd(Coach t)
@@ -32,10 +32,13 @@ namespace BusinessLayer.Concrete
         {
             _coachDal.Delete(t);
         }
-
         public List<Coach> TGetList()
         {
-            return _coachDal.GetList();
+            return _coachDal.GetList(); // Veya uygun bir implementasyon
+        }
+        public List<Coach> GetAllCoaches()
+        {
+            return _coachDal.GetList(); // Veya uygun bir şekilde implement edin
         }
 
         public void TUpdate(Coach t)
