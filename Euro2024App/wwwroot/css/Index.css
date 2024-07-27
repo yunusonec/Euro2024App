@@ -86,7 +86,7 @@
     margin-top: 15px; /* Üstten boşluk */
     text-align: center; /* Ortala */
 }
-
+    
 .card-body {
     display: flex;
     flex-direction: column;
@@ -96,7 +96,7 @@
 
 .custom-card {
     width: 100%;
-    max-width: 200px; /* Kart genişliğini küçültür */
+    max-width: 500px; /* Kart genişliğini küçültür */
     margin: auto; /* Kartı ortalar */
 }
 

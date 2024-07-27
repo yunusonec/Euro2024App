@@ -15,14 +15,16 @@
         @foreach (var match in Model)
         {
             <div class="col-md-4 mb-4">
-                <div class="card custom-card">
+                <div class="card custom-card shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title">@match.HomeTeam.Name vs @match.AwayTeam.Name</h5>
-                        <p class="card-text">
+                        <h5 class="card-title text-center">@match.HomeTeam.Name vs @match.AwayTeam.Name</h5>
+                        <p class="card-text text-center">
                             <strong>Tarih:</strong> @match.Date.ToString("dd MMMM yyyy") <br />
                             <strong>Skor:</strong> @match.HomeTeamGoals - @match.AwayTeamGoals <br />
                         </p>
-                        <a href="@Url.Action("Details", "Match", new { id = match.Id })" class="btn btn-info">Detaylar</a>
+                        <div class="d-flex justify-content-center">
+                            <a href="@Url.Action("Details", "Match", new { id = match.Id })" class="btn btn-info">Detaylar</a>
+                        </div>
                     </div>
                 </div>
             </div>
